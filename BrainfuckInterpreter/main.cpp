@@ -4,7 +4,7 @@
 #include <string>
 #include "Brainfuck.h"
 
-int main(int argc, char* argv[])
+int main()
 {
 	std::string code = ""
 		"  +++++ +++++             initialize counter (cell #0) to 10"
