@@ -1,18 +1,18 @@
 #include "./brainfuck.h"
 
 #include <iostream>
+#include <string>
 
 bool Brainfuck::Run_(unsigned start, unsigned end) {
 
-  char cell;
-  char input;
+  unsigned char cell;
+  unsigned char input;
   char comp;
 
   int brackets{1};
   bool match {false};
 
   unsigned closingPos{};
-
 
   for (unsigned i{start}; i < end; ++i) {
     comp = code_.at(i);
@@ -32,13 +32,13 @@ bool Brainfuck::Run_(unsigned start, unsigned end) {
     case '.':
       cell = memory_->Get();
       if (cell == 10) {
-        output_ += "\n";
+        output_ += std::string(1, '\n');
       } else {
-        output_ += cell;
+        output_ += std::string(1, static_cast<char>(cell));
       }
       break;
     case ',':
-      while (!Read_(input)) {}
+      while(!Read_(input)) {}
        memory_->Set(input);
        break;
     case '[':
@@ -58,7 +58,7 @@ bool Brainfuck::Run_(unsigned start, unsigned end) {
          return false;
        }
 
-       while (memory_->NotNull()) {
+       while(memory_->NotNull()) {
          if (!Run_(i + 1, closingPos)) {
            return false;
          }
@@ -69,7 +69,7 @@ bool Brainfuck::Run_(unsigned start, unsigned end) {
   return true;
 }
 
-bool Brainfuck::Read_(char &output) const {
+bool Brainfuck::Read_(unsigned char &output) const {
   std::string byte;
 
   std::cout << "Input one byte as hex [FF]: ";

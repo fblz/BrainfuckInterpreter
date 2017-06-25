@@ -16,7 +16,7 @@ private:
   std::string output_;
 
   bool Run_(unsigned start, unsigned end);
-  bool Read_(char &output) const;
+  bool Read_(unsigned char &output) const;
 
 };
 

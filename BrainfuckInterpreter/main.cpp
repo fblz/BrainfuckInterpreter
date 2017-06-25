@@ -4,7 +4,7 @@
 #include <string>
 
 int main() {
-  std::string code =
+  std::string const code =
       ""
       "  +++++ +++++             initialize counter (cell #0) to 10"
       "  [                       use loop to set 70/100/30/10"
@@ -29,13 +29,12 @@ int main() {
       "  > .                     print '\n'";
 
   Brainfuck Interpreter(code);
+
   if (Interpreter.Run()) {
     std::cout << "Success!" << std::endl;
-
 #ifdef _WIN32
     system("pause");
 #endif // _WIN32
-
     return 0;
   }
 
@@ -43,6 +42,5 @@ int main() {
 #ifdef _WIN32
   system("pause");
 #endif // _WIN32
-
   return 1;
 }

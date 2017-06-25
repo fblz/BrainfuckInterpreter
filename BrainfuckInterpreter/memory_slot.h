@@ -3,9 +3,9 @@
 
 class MemorySlot {
 public:
-  explicit MemorySlot(MemorySlot *pre) : data(9), prev(pre), next(nullptr) {}
+  explicit MemorySlot(MemorySlot *pre) : data(0), prev(pre), next(nullptr) {}
 
-  char data;
+  unsigned char data;
   MemorySlot *prev;
   MemorySlot *next;
 };

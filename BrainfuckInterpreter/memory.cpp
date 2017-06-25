@@ -44,8 +44,8 @@ void Memory::Increment() const { current_->data++; }
 
 void Memory::Decrement() const { current_->data--; }
 
-char Memory::Get() const { return current_->data; }
+unsigned char Memory::Get() const { return current_->data; }
 
-void Memory::Set(char input) const { current_->data = input; }
+void Memory::Set(const unsigned char input) const { current_->data = input; }
 
 bool Memory::NotNull() const { return current_->data != 0; }

@@ -15,8 +15,8 @@ public:
   void Increment() const;
   void Decrement() const;
 
-  char Get() const;
-  void Set(char input) const;
+  unsigned char Get() const;
+  void Set(const unsigned char input) const;
 
   bool NotNull() const;
 
