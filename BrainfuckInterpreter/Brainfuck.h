@@ -8,7 +8,7 @@ class Brainfuck
 	std::string code;
 	std::string output;
 
-	bool run(int start, int end);
+  bool run(unsigned start, unsigned end);
 	bool Brainfuck::read(unsigned char& output) const;
 
 public:

@@ -1,7 +1,7 @@
 #include "Brainfuck.h"
 #include <iostream>
 
-bool Brainfuck::run(int start, int end)
+bool Brainfuck::run(unsigned start, unsigned end)
 {
 	for (int i = start; i < end; ++i)
 	{
