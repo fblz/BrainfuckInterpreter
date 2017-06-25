@@ -107,8 +107,8 @@ bool Brainfuck::Read_(unsigned char &output) const {
 Brainfuck::Brainfuck(std::string code) { code_ = code; }
 
 bool Brainfuck::Run() {
-  this->memory_ = new Memory(100);
-  this->output_ = "";
+  memory_ = new Memory(100);
+  output_ = "";
 
   if (Run_(0, static_cast<unsigned int>(code_.length()))) {
     std::cout << output_ << std::endl;
