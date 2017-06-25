@@ -1,7 +1,9 @@
-#include "./brainfuck.h"
+
 
 #include <iostream>
 #include <string>
+
+#include "brainfuck.h"
 
 int main() {
   std::string const code =
