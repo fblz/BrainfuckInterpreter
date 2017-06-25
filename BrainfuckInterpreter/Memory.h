@@ -3,14 +3,12 @@
 
 class Memory
 {
-  explicit Memory(unsigned size);
-
 	MemorySlot* list;
 	MemorySlot* current;
 	const int DEFAULT_SIZE = 10;
 
 public:
-
+  explicit Memory(unsigned size);
 	~Memory();
 
 	bool prev();
