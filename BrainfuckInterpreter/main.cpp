@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-int main() {
+int main(int argc, char *argv[]) {
   std::string code =
       ""
       "  +++++ +++++             initialize counter (cell #0) to 10"
@@ -29,7 +29,7 @@ int main() {
       "  > .                     print '\n'";
 
   Brainfuck Interpreter(code);
-  if (Interpreter.Run()) {
+  if (Interpreter.run()) {
     std::cout << "Success!" << std::endl;
 
 #ifdef _WIN32
