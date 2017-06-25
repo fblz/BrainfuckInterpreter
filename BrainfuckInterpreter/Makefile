@@ -1,4 +1,4 @@
-CXX=g++
+CXX=clang++
 CXXFLAGS=-std=c++14 -I ./ -ggdb -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -c
 
 SOURCEDIR=./
@@ -27,10 +27,10 @@ $(EXECUTABLE): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $< -o $(OBJDIR)/$@
 
 clean:
-	rm -f $(shell find build/ -name '*.o')
+	rm -f $(shell find ./ -name '*.o')
 
 distclean:
-	rm -fr build
+	#rm -fr build
         #git ls-files --others | xargs rm -rf
 
 run:
