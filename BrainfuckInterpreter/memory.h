@@ -5,27 +5,26 @@
 
 class Memory {
 public:
-  explicit Memory(int size);
 
-  explicit Memory();
-
+  Memory(int size = 10);
   ~Memory();
 
-  bool prev();
-  bool next();
+  bool Prev();
+  bool Next();
 
-  void increment() const;
-  void decrement() const;
+  void Increment() const;
+  void Decrement() const;
 
-  unsigned char get() const;
-  void set(unsigned char input) const;
+  char Get() const;
+  void Set(char input) const;
 
-  bool notNull() const;
+  bool NotNull() const;
+
+  int Size();
 
 private:
   MemorySlot *list_;
   MemorySlot *current_;
-  const int DEFAULT_SIZE = 10;
 };
 
 #endif // MEMORY_H_

@@ -2,67 +2,74 @@
 
 #include <iostream>
 
-bool Brainfuck::run(int start, int end) {
-  for (int i = start; i < end; ++i) {
-    if (code[i] == '<') {
-      if (!memory->prev()) {
-        return false;
-      }
-    } else if (code[i] == '>') {
-      if (!memory->next()) {
-        return false;
-      }
-    } else if (code[i] == '-') {
-      memory->decrement();
-    } else if (code[i] == '+') {
-      memory->increment();
-    } else if (code[i] == '.') {
-      unsigned char cell = memory->get();
+bool Brainfuck::Run_(unsigned start, unsigned end) {
+
+  char cell;
+  char input;
+  char comp;
+
+  int brackets{1};
+  bool match {false};
+
+  unsigned closingPos{};
+
+
+  for (unsigned i{start}; i < end; ++i) {
+    comp = code_.at(i);
+    switch(comp) {
+    case '<':
+      if (!memory_->Prev()) { return false; }
+      break;
+    case '>':
+      if (!memory_->Next()) { return false; }
+      break;
+    case '-':
+      memory_->Decrement();
+      break;
+    case '+':
+      memory_->Increment();
+      break;
+    case '.':
+      cell = memory_->Get();
       if (cell == 10) {
-        output += "\n";
+        output_ += "\n";
       } else {
-        output += cell;
+        output_ += cell;
       }
-    } else if (code[i] == ',') {
-      unsigned char input;
-      while (!read(input)) {
-      }
-      memory->set(input);
-    } else if (code[i] == '[') {
-      int brackets = 1;
-      int closingPos = i + 1;
-      bool match = false;
-
+      break;
+    case ',':
+      while (!Read_(input)) {}
+       memory_->Set(input);
+       break;
+    case '[':
+      closingPos = ++i;
       for (; closingPos < end; ++closingPos) {
-        if (code[closingPos] == '[') {
-          ++brackets;
-        } else if (code[closingPos] == ']') {
-          --brackets;
-          match = brackets == 0;
-          break;
-        }
-      }
+         if (code_.at(closingPos) == '[') {
+           ++brackets;
+         } else if (code_.at(closingPos) == ']') {
+           --brackets;
+           match = brackets == 0;
+           break;
+         }
+       }
+       if (!match) {
+         std::cout << "Could not find a matching bracket for pos " << i
+                   << std::endl;
+         return false;
+       }
 
-      if (!match) {
-        std::cout << "Could not find a matching bracket for pos " << i
-                  << std::endl;
-        return false;
-      }
-
-      while (memory->notNull()) {
-        if (!run(i + 1, closingPos)) {
-          return false;
-        }
-      }
-
-      i = closingPos;
+       while (memory_->NotNull()) {
+         if (!Run_(i + 1, closingPos)) {
+           return false;
+         }
+       }
+       i = closingPos;
     }
   }
-
   return true;
 }
 
-bool Brainfuck::read(unsigned char &output) const {
+bool Brainfuck::Read_(char &output) const {
   std::string byte;
 
   std::cout << "Input one byte as hex [FF]: ";
@@ -97,17 +104,17 @@ bool Brainfuck::read(unsigned char &output) const {
   return true;
 }
 
-Brainfuck::Brainfuck(std::string code) { this->code = code; }
+Brainfuck::Brainfuck(std::string code) { code_ = code; }
 
-bool Brainfuck::run() {
-  this->memory = new Memory(100);
-  this->output = "";
+bool Brainfuck::Run() {
+  this->memory_ = new Memory(100);
+  this->output_ = "";
 
-  if (run(0, code.length())) {
-    std::cout << output << std::endl;
+  if (Run_(0, static_cast<unsigned int>(code_.length()))) {
+    std::cout << output_ << std::endl;
     return true;
   }
 
-  delete this->memory;
+  delete memory_;
   return false;
 }

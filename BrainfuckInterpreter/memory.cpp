@@ -12,18 +12,6 @@ Memory::Memory(int size) {
   }
 }
 
-Memory::Memory() {
-  list_ = new MemorySlot(nullptr);
-  current_ = list_;
-  MemorySlot *tmp = list_;
-
-  for (int i = 1; i < DEFAULT_SIZE; i++) {
-    MemorySlot *next = new MemorySlot(tmp);
-    tmp->next = next;
-    tmp = next;
-  }
-}
-
 Memory::~Memory() {
   for (MemorySlot *ptr = list_; ptr != nullptr;) {
     MemorySlot *tmp = ptr;
@@ -32,7 +20,7 @@ Memory::~Memory() {
   }
 }
 
-bool Memory::prev() {
+bool Memory::Prev() {
   if (current_->prev != nullptr) {
     current_ = current_->prev;
     return true;
@@ -41,7 +29,7 @@ bool Memory::prev() {
   return false;
 }
 
-bool Memory::next() {
+bool Memory::Next() {
   if (current_->next != nullptr) {
     current_ = current_->next;
     return true;
@@ -52,12 +40,12 @@ bool Memory::next() {
   return true;
 }
 
-void Memory::increment() const { current_->data++; }
+void Memory::Increment() const { current_->data++; }
 
-void Memory::decrement() const { current_->data--; }
+void Memory::Decrement() const { current_->data--; }
 
-unsigned char Memory::get() const { return current_->data; }
+char Memory::Get() const { return current_->data; }
 
-void Memory::set(unsigned char input) const { current_->data = input; }
+void Memory::Set(char input) const { current_->data = input; }
 
-bool Memory::notNull() const { return current_->data != 0; }
+bool Memory::NotNull() const { return current_->data != 0; }

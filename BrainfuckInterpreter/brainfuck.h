@@ -8,15 +8,15 @@
 class Brainfuck {
 public:
   explicit Brainfuck(std::string code);
-  bool run();
+  bool Run();
 
 private:
-  Memory *memory;
-  std::string code;
-  std::string output;
+  Memory *memory_;
+  std::string code_;
+  std::string output_;
 
-  bool run(int start, int end);
-  bool read(unsigned char &output) const;
+  bool Run_(unsigned start, unsigned end);
+  bool Read_(char &output) const;
 
 };
 
