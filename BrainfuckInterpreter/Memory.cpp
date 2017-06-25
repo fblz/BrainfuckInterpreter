@@ -1,31 +1,18 @@
 #include "Memory.h"
 
-Memory::Memory(int size)
-{
-	this->list = new MemorySlot(nullptr);
-	this->current = this->list;
-	MemorySlot* tmp = this->list;
-	
-	for (int i = 1; i < size; i++)
-	{
-		MemorySlot* next = new MemorySlot(tmp);
-		tmp->next = next;
-		tmp = next;
-	}
-}
 
 Memory::Memory()
 {
-	this->list = new MemorySlot(nullptr);
-	this->current = this->list;
-	MemorySlot* tmp = this->list;
+  this->list = new MemorySlot(nullptr);
+  this->current = this->list;
+  MemorySlot* tmp = this->list;
 
-	for (int i = 1; i < this->DEFAULT_SIZE; i++)
-	{
-		MemorySlot* next = new MemorySlot(tmp);
-		tmp->next = next;
-		tmp = next;
-	}
+  for (int i = 1; i < size; i++)
+  {
+    MemorySlot* next = new MemorySlot(tmp);
+    tmp->next = next;
+    tmp = next;
+  }
 }
 
 Memory::~Memory()
