@@ -1,7 +1,7 @@
 #include "Memory.h"
 
 
-Memory::Memory()
+Memory::Memory(unsigned size = 10)
 {
   this->list = new MemorySlot(nullptr);
   this->current = this->list;
@@ -17,59 +17,59 @@ Memory::Memory()
 
 Memory::~Memory()
 {
-	for (MemorySlot* ptr = this->list; ptr !=nullptr; )
-	{
-		MemorySlot* tmp = ptr;
-		ptr = ptr->next;
-		delete tmp;
-	}
+  for (MemorySlot* ptr = this->list; ptr != nullptr; )
+  {
+    MemorySlot* tmp = ptr;
+    ptr = ptr->next;
+    delete tmp;
+  }
 }
 
 bool Memory::prev()
 {
-	if (this->current->prev != nullptr)
-	{
-		this->current = this->current->prev;
-		return true;
-	}
+  if (this->current->prev != nullptr)
+  {
+    this->current = this->current->prev;
+    return true;
+  }
 
-	return false;
+  return false;
 }
 
 bool Memory::next()
 {
-	if (this->current->next != nullptr)
-	{
-		this->current = this->current->next;
-		return true;
-	}
+  if (this->current->next != nullptr)
+  {
+    this->current = this->current->next;
+    return true;
+  }
 
-	this->current->next = new MemorySlot(this->current);
-	this->current = this->current->next;
-	return true;
+  this->current->next = new MemorySlot(this->current);
+  this->current = this->current->next;
+  return true;
 }
 
 void Memory::increment() const
 {
-	this->current->data++;
+  this->current->data++;
 }
 
 void Memory::decrement() const
 {
-	this->current->data--;
+  this->current->data--;
 }
 
 unsigned char Memory::get() const
 {
-	return this->current->data;
+  return this->current->data;
 }
 
 void Memory::set(unsigned char input) const
 {
-	this->current->data = input;
+  this->current->data = input;
 }
 
 bool Memory::notNull() const
 {
-	return this->current->data != 0;
+  return this->current->data != 0;
 }

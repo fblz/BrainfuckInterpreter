@@ -1,26 +1,22 @@
 #pragma once
 #include "MemorySlot.h"
 
+
 class Memory
 {
-	MemorySlot* list;
-	MemorySlot* current;
-	const int DEFAULT_SIZE = 10;
-
-public:
+ public:
   explicit Memory(unsigned size);
-	~Memory();
+  ~Memory();
 
-	bool prev();
-	bool next();
+  bool prev();
+  bool next();
+  void increment() const;
+  void decrement() const;
+  unsigned char get() const;
+  void set(unsigned char input) const;
+  bool notNull() const;
 
-	void increment() const;
-	void decrement() const;
-
-	unsigned char get() const;
-	void set(unsigned char input) const;
-
-	bool notNull() const;
-
+ private:
+  MemorySlot* list;
+  MemorySlot* current;
 };
-
