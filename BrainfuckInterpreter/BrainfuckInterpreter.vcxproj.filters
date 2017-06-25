@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Quelldateien">
@@ -18,21 +18,21 @@
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Memory.cpp">
+    <ClCompile Include="memory.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Brainfuck.cpp">
+    <ClCompile Include="brainfuck.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Memory.h">
+    <ClInclude Include="memory.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="MemorySlot.h">
+    <ClInclude Include="memory_slot.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Brainfuck.h">
+    <ClInclude Include="brainfuck.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
