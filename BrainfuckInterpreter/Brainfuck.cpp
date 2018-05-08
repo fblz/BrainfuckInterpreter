@@ -1,5 +1,6 @@
 #include "Brainfuck.h"
 #include <iostream>
+#include <string>
 
 
 bool Brainfuck::run(unsigned start, unsigned end)
